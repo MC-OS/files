@@ -381,12 +381,16 @@ namespace Marlin.View {
 
             switch (event.keyval) {
 
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
                 case Gdk.Key.Left:
                     if (current_position > 0) {
                         to_activate = slot_list.nth_data (current_position - 1);
                     }
 
                     break;
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
                 case Gdk.Key.Right:
                     if (current_slot.get_selected_files () == null) {
                         return true;
@@ -407,29 +411,6 @@ namespace Marlin.View {
 
                     if (next_location != null && next_location.equal (current_location)) {
                         to_activate = slot_list.nth_data (current_position + 1);
-                    } else if (selected_file.is_folder ()) {
-                        add_location (current_location, current_slot);
-                        return true;
-                    }
-
-                    break;
-
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                    if (current_slot.get_selected_files () == null) {
-                        return true;
-                    }
-
-                    GOF.File? selected_file = current_slot.get_selected_files ().data;
-
-                    if (selected_file == null) {
-                        return true;
-                    }
-
-                    GLib.File current_location = selected_file.location;
-
-                    if (current_position > 0) {
-                        to_activate = slot_list.nth_data (current_position);
                     } else if (selected_file.is_folder ()) {
                         add_location (current_location, current_slot);
                         return true;
