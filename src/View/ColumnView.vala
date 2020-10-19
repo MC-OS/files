@@ -89,7 +89,7 @@ namespace FM {
 
         protected override bool on_view_key_press_event (Gdk.EventKey event) {
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
-            bool no_mods = (mods == 0);
+            bool no_mods = (mods == 1);
 
             switch (event.keyval) {
                 /* Do not emit alert sound on left and right cursor keys in Miller View */
@@ -98,6 +98,7 @@ namespace FM {
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                 case Gdk.Key.BackSpace:
+                case Gdk.Key..Control_L || Gdk.Key.Up:
                     if (no_mods) {
                         /* Pass event to MillerView */
                         slot.colpane.key_press_event (event);

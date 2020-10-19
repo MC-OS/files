@@ -419,6 +419,7 @@ namespace Marlin.View {
                     break;
 
                 case Gdk.Key.BackSpace:
+                case Gdk.Key..Control_L || Gdk.Key.Up:
                         if (current_position > 0) {
                             truncate_list_after_slot (slot_list.nth_data (current_position - 1));
                         } else {
