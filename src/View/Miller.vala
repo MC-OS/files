@@ -273,7 +273,6 @@ namespace Marlin.View {
             slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
             slot.directory_loaded.disconnect (on_slot_directory_loaded);
-
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
@@ -465,7 +464,6 @@ namespace Marlin.View {
                 }
             });
         }
-
 
 /** Helper functions */
 
