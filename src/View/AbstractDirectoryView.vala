@@ -275,7 +275,6 @@ namespace FM {
         protected unowned Gtk.RecentManager recent;
 
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
-        public signal void item_hovered (GOF.File? file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
         protected AbstractDirectoryView (Marlin.View.Slot _slot) {
@@ -1978,6 +1977,7 @@ namespace FM {
                 cut_menuitem.action_name = "selection.cut";
 
                 var copy_menuitem = new Gtk.MenuItem ();
+                ///TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
                 copy_menuitem.add (new Granite.AccelLabel (
                     _("Copy"),
                     "<Ctrl>c"
@@ -3117,7 +3117,6 @@ namespace FM {
                         on_directory = target_file.is_directory;
                     }
 
-                    item_hovered (target_file);
                     hover_path = path;
                 }
             }
@@ -3146,7 +3145,6 @@ namespace FM {
         }
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
-            item_hovered (null); /* Ensure overlay statusbar disappears */
             hover_path = null;
             return false;
         }
@@ -3727,7 +3725,6 @@ namespace FM {
         }
 
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
-            item_hovered (null);
             return true;
         }
 
@@ -3751,7 +3748,6 @@ namespace FM {
         }
 
         private void cancel_hover () {
-            item_hovered (null);
             hover_path = null;
         }
 
